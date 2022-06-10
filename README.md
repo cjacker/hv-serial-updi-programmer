@@ -81,8 +81,8 @@ Wire up your devices as below:
 |  USB2Serial   |  TX     |  UPDI Adapter  |  UPDI/DebugWire |   AVR Board   |
 |   Adapter     +---------+     Board      +-----------------+               |
 |               |  RX     |                |                 |               |
-|               +---------+                |                 |               |
-|               |  RTS    |                |                 |               |
+|               +---------+  (jumper to    |                 |               |
+|               |  RTS    |    toggle HV)  |                 |               |
 |               +---------+                |                 |               |
 |               |         |                |                 |               |
 +---------------+         +----------------+                 +---------------+
