@@ -4,15 +4,15 @@
 
 [dwdebug](https://github.com/dcwbrown/dwire-debug) and [pyupdi](https://github.com/mraardvark/pyupdi) provide a covenient and cheap solution by using a standard TTL serial port to program debugwire and UPDI AVR MCU.
 
-You can follow below circuit to make a adapter yourself, then connect it to debugwire or UPDI pin, use dwdebug and pyupdi to program and debug (dwdebug for debugwire, no opensource hardware debug solution for UPDI up to now).
+You can follow below circuit to make a adapter yourself, then connect it to debugwire or UPDI pin, use dwdebug and pyupdi to program and debug (dwdebug for debugwire, no opensource UPDI debug hardware solution up to now).
 
 <img src="https://user-images.githubusercontent.com/1625340/173095833-39e2ad1f-9864-4bdb-afde-500b129f972b.png" width="50%"/>
 
-As I tested, it works with ch34x and ftx232 usb to serial adapters.
+As I tested, it works with my ch34x and ftx232 usb to serial adapters.
 
-For solution 1, the '4.7k resistor' can be replaced by 1k to 4.7k resistor, you can test it using breadboard, it's depend on your serial adapter, maybe it already integerated a resistor.
+For solution 1, the '4.7k resistor' can be replaced by 1k to 4.7k resistor, it depend on your serial adapter. you can test it using breadboard and find out the best resistance value you should use, 'the best' means it can establish stable connection.
 
-For solution 2, the '1N5819' diode can be replaced by 1N914/1N4148, and some zener diode as I tried also works very well.
+For solution 2, the '1N5819' diode can be replaced by 1N914/1N4148, and some zener diodes as I tried also works very well.
 
 
 # DIY High Voltage Serial UPDI programmer
@@ -26,12 +26,12 @@ In the event that a valid key is not clocked into UPDI within the window, the hi
 "
 
 "
-**igh voltage activation for UPDI is a simple pulse, rising from Vdd to the high-voltage threshold, and falling back to Vdd. Unlike some other high-voltage interfaces, the high-voltage source plays no part in the programming of memory, it is simply an activation mechanism for UPDI physical interface.**
+**High voltage activation for UPDI is a simple pulse, rising from Vdd to the high-voltage threshold, and falling back to Vdd. Unlike some other high-voltage interfaces, the high-voltage source plays no part in the programming of memory, it is simply an activation mechanism for UPDI physical interface.**
 "
 
-That's to say, what we all need to do is sending a 12v pulse before any signal and then use it as normal UPDI, utilities already exists such as pyupdi can be used directly, and **does NOT need any code changes**.
+That's to say, what we all need to do is sending a 12v pulse before any other programming signals and then activate the UPDI pin and use it as normal UPDI, utilities such as pyupdi can be used directly **without any code changes**.
 
-Here is a simple solution works with my CH341 and ft2232 adapters:
+Here is a simple solution works with my CH341 and FT2232 adapters. the 12v pulse is sent entirely by hardware, as a result of the RTS handshaking line being asserted when the serial port is opened, and thus does not require any special support in the programming software.
 
 <img src="https://user-images.githubusercontent.com/1625340/173098226-afedbc52-d645-401d-8d91-6870c06b2dd6.png" width="60%"/>
 
