@@ -73,19 +73,19 @@ This adapter does not require any code changes to UPDI utilies such as pyupdi, p
 Wire up your devices as below:
 
 ```
-+---------------+         +----------------+                 +---------------+
-|               |  VCC    |                |  VCC            |               |
-|               +---------+                +-----------------+               |
-|               |  GND    |                |  GND            |               |
-|    CH34x      +---------+    HV Serial   +-----------------+    Target     |
-|  USB2Serial   |  TX     |  UPDI Adapter  |  UPDI/DebugWire |   AVR Board   |
-|   Adapter     +---------+     Board      +-----------------+               |
-|               |  RX     |                |                 |               |
-|               +---------+  (jumper to    |                 |               |
-|               |  RTS    |    toggle HV)  |                 |               |
-|               +---------+                |                 |               |
-|               |         |                |                 |               |
-+---------------+         +----------------+                 +---------------+
++--------------+      +--------------+       +----------------+                 +-----------+
+|              |      |              |  VCC  |                |  VCC            |           |
+|              |      |              +-------+                +-----------------+           |
+|              |      |              |  GND  |                |  GND            |           |
+|      PC      |      |    CH34x     +-------+    HV Serial   +-----------------+  Target   |
+|    (pyupdi   | USB  |  USB2Serial  |  TX   |  UPDI Adapter  |  UPDI/DebugWire | AVR Board |
+|  pymcuprog)  +------+   Adapter    +-------+     Board      +-----------------+           |
+|              |      |              |  RX   |                |                 |           |
+|              |      |              +-------+  (jumper to    |                 |           |
+|              |      |              |  RTS  |    toggle HV)  |                 |           |
+|              |      |              +-------+                |                 |           |
+|              |      |              |       |                |                 |           |
++--------------+      +--------------+       +----------------+                 +-----------+
 ```
 
 And use attiny816 as example:
