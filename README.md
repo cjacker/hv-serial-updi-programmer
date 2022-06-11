@@ -33,7 +33,7 @@ That's to say, what we all need to do is sending a 12v pulse before any other pr
 
 Here is a simple solution works with my CH341 and FT2232 adapters. the 12v pulse is sent entirely by hardware, as a result of the RTS handshaking line being asserted when the serial port is opened, and thus does not require any special support in the programming software.
 
-<img src="https://user-images.githubusercontent.com/1625340/173098226-afedbc52-d645-401d-8d91-6870c06b2dd6.png" width="60%"/>
+<img src="https://github.com/cjacker/hv-serial-updi-programmer/blob/main/hv-serial-updi.png" width="60%"/>
 
 The BOM list:
 
